@@ -16,5 +16,5 @@ void Character::Initialize(GameObject* stone1, GameObject* stone2)
 
 void Character::StandardState::Update()
 {
-	Debug::Log(L"update");
+	//Debug::Log(L"update");
 }

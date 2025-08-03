@@ -3,6 +3,7 @@
 #include "GameEngine.h"
 
 #include "Character.h"
+#include "StageCreator.h"
 
 using namespace SceneManagement;
 
@@ -12,6 +13,11 @@ void SampleSceneAsset::load_scene_asset_impl()
 
 	GameObject* camera = new GameObject();
 	camera->AddComponent<Camera>();
+
+	GameObject* stageCreatorObject = new GameObject();
+	stageCreatorObject->AddComponent<StageCreator>();
+
+	scene->AddGameObject(stageCreatorObject);
 
 	GameObject* stone1 = new GameObject();
 	stone1->AddComponent<SpriteRenderer>();
