@@ -134,6 +134,7 @@
     <ClInclude Include="InputReceiver.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SampleSceneAsset.h" />
+    <ClInclude Include="StageBlock.h" />
     <ClInclude Include="StageCreator.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -142,6 +143,7 @@
     <ClCompile Include="Hafumi.cpp" />
     <ClCompile Include="InputReceiver.cpp" />
     <ClCompile Include="SampleSceneAsset.cpp" />
+    <ClCompile Include="StageBlock.cpp" />
     <ClCompile Include="StageCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
