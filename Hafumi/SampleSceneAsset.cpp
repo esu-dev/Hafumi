@@ -5,6 +5,7 @@
 #include "Character.h"
 #include "StageCreator.h"
 #include "InputReceiver.h"
+#include "Tracker.h"
 
 using namespace SceneManagement;
 
@@ -14,13 +15,14 @@ Scene* SampleSceneAsset::load_scene_asset_impl()
 
 	GameObject* camera = new GameObject();
 	camera->AddComponent<Camera>();
+	camera->AddComponent<Tracker>();
 
 	GameObject* stageCreatorObject = new GameObject();
 	stageCreatorObject->AddComponent<StageCreator>();
 
 
 	GameObject* stone1 = new GameObject();
-	stone1->AddComponent<SpriteRenderer>();
+	stone1->AddComponent<SpriteRenderer>()->SetColor(DirectX::XMFLOAT4(1, 0, 0, 1));
 
 	GameObject* stone2 = new GameObject();
 	stone2->AddComponent<SpriteRenderer>();

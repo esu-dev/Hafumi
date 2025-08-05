@@ -14,11 +14,15 @@ public:
 	void DecreaseStickNum();
 
 private:
+	const float STANDARD_HEIGHT = -4;
+	const float START_POS_X = -7;
+	const float stickLengthUnit = 1.5f;
+
 	int stickNum = 2;
 	GameObject* stone1;
 	GameObject* stone2;
-	GameObject* fulcrumStone;
-	GameObject* movingStone;
+	GameObject* _fulcrumStone;
+	GameObject* _movingStone;
 
 	class State
 	{

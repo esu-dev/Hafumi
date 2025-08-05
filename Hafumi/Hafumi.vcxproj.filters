@@ -45,6 +45,9 @@
     <ClInclude Include="StageBlock.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Tracker.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Hafumi.cpp">
@@ -63,6 +66,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="StageBlock.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracker.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
