@@ -13,7 +13,7 @@ public:
 	void SetTarget(GameObject* target) { _target = target; }
 
 private:
-	float _movingRate = 0.01f;
+	float _movingRate = 0.02f;
 	Vector3 _offset = Vector3(0, 0, 0);
 	GameObject* _target;
 };

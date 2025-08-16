@@ -2,6 +2,7 @@
 
 #include "GameEngine.h"
 #include "Tracker.h"
+#include "StageCreator.h"
 
 // public
 void Character::Update()
@@ -93,12 +94,23 @@ void Character::RotationState::Update()
 	// 支点石からの相対ベクトルを求める
 	Vector3 relatedVector = movingStone->GetTransform()->position - fulcrumStone->GetTransform()->position;
 
-	movingStone->GetTransform()->position = fulcrumStone->GetTransform()->position + Quaternion::AngleAxis(-45 * Time::GetDelataTime(), Vector3::forward).Mult(relatedVector);
+	movingStone->GetTransform()->position = fulcrumStone->GetTransform()->position + Quaternion::AngleAxis(-_angularSpeed * Time::GetDelataTime(), Vector3::forward).Mult(relatedVector);
 
+	// 回転の終了
 	if (movingStone->GetTransform()->position.y <= GetCharacter()->STANDARD_HEIGHT &&
 		movingStone->GetTransform()->position.x > fulcrumStone->GetTransform()->position.x)
 	{
+		// 位置の調整
 		movingStone->GetTransform()->position = Vector3(fulcrumStone->GetTransform()->position.x + GetCharacter()->stickNum * GetCharacter()->stickLengthUnit, GetCharacter()->STANDARD_HEIGHT, 0);
+
+		// アイテム取得処理
+		bool speedUp = StageCreator::Instance->GetItem(movingStone->GetTransform()->position.x);
+		if (speedUp)
+		{
+			_angularSpeed += 5;
+
+			Debug::Log(L"Speed Up");
+		}
 
 		// 支点石の変更
 		GameObject* stone = fulcrumStone;
@@ -108,7 +120,10 @@ void Character::RotationState::Update()
 		Camera::get_main()->gameObject->GetComponent<Tracker>()->SetTarget(GetCharacter()->_fulcrumStone);
 
 		// 状態遷移
-		GetCharacter()->state = GetCharacter()->standardState;
+		if (GetCharacter()->_fulcrumStone == GetCharacter()->stone1)
+		{
+			GetCharacter()->state = GetCharacter()->standardState;
+		}
 	}
 }
 

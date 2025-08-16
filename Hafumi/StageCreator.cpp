@@ -7,15 +7,20 @@
 
 using namespace SceneManagement;
 
+
+StageCreator* StageCreator::Instance = nullptr;
+
 void StageCreator::Update()
 {
 	if (_creationTimer >= _creationInterval)
 	{
 		_creationTimer = 0;
 
+
+		// ブロックの生成
 		GameObject* stageBlock = new GameObject();
 		stageBlock->AddComponent<SpriteRenderer>();
-		stageBlock->AddComponent<BoxCollider2D>()->SetSize(Vector2(2, 2));
+		stageBlock->AddComponent<BoxCollider2D>()->SetSize(Vector2(1.5, 1.5));
 		stageBlock->AddComponent<Rigidbody2D>()->SetUseGravity(false);
 		stageBlock->AddComponent<StageBlock>()->Initialize(3);
 		stageBlock->GetTransform()->position = Vector3(_createdPosition, STANDARD_HEIGHT, 0);
@@ -25,7 +30,8 @@ void StageCreator::Update()
 		_createdPosition += 1.5;
 
 
-		float createdPositionX = _lastCreatedPosition + rand() % 5 * 1.5f;
+		// アイテムの生成
+		float createdPositionX = _lastCreatedPosition + (rand() % 10 + 1) * 1.5f;
 		GameObject* item = new GameObject();
 		item->AddComponent<SpriteRenderer>()->SetColor(DirectX::XMFLOAT4(0, 1, 0, 1));
 		item->GetTransform()->position = Vector3(createdPositionX, STANDARD_HEIGHT + 1, 0);
@@ -33,9 +39,39 @@ void StageCreator::Update()
 
 		SceneManager::GetActiveScene()->AddGameObject(item);
 
-		_lastCreatedPosition = createdPositionX;
+		ItemData* itemData = new ItemData();
+		itemData->item = item;
+		itemData->PosX = createdPositionX;
+		_itemDataVector.push_back(itemData);
 
+		_lastCreatedPosition = createdPositionX;
 	}
 
 	_creationTimer += Time::GetDelataTime();
+}
+
+StageCreator::StageCreator()
+{
+	if (Instance == nullptr)
+	{
+		Instance = this;
+	}
+}
+
+bool StageCreator::GetItem(float posX)
+{
+	ItemData* itemData = std_extension::Find<ItemData*>(_itemDataVector, [&](ItemData* x) -> bool { return abs(x->PosX - posX) < 0.1f; });
+
+	//_itemDataVector.erase(std::remove(_itemDataVector.begin(), _itemDataVector.end(), itemData), _itemDataVector.end());
+	std_extension::Remove(_itemDataVector, itemData);
+
+	if (itemData)
+	{
+		Destroy(itemData->item);
+		delete itemData;
+
+		return true;
+	}
+
+	return false;
 }

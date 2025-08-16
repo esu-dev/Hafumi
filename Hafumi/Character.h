@@ -51,6 +51,10 @@ private:
 		void Update() override;
 
 		RotationState(Character* character);
+
+
+	private:
+		float _angularSpeed = 45;
 	};
 
 	StandardState* standardState = new StandardState(this);
