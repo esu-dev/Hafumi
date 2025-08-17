@@ -122,7 +122,7 @@ void Character::RotationState::Update()
 		// ó‘Ô‘JˆÚ
 		if (GetCharacter()->_fulcrumStone == GetCharacter()->stone1)
 		{
-			GetCharacter()->state = GetCharacter()->standardState;
+			//GetCharacter()->state = GetCharacter()->standardState;
 		}
 	}
 }

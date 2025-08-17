@@ -3,6 +3,7 @@
 #include "framework.h"
 
 #include "Component.h"
+#include "StageBlock.h"
 
 class StageCreator : public Component
 {
@@ -24,11 +25,21 @@ public:
 
 private:
 	const float STANDARD_HEIGHT = -5;
+
+	// ブロック
 	float _creationInterval = 1;
 	float _creationTimer = 0;
 	float _createdPosition = -10;
 
-	float _itemCreationIntrval = 1;
+	float _fallInterval = 3;
+	float _fallTimer = 0;
+
+	std::vector<StageBlock*> _blockVector;
+
+
+	// アイテム
+	float _itemCreationIntrval = 2;
+	float _itemCreationTimer = 0;
 	float _lastCreatedPosition = -5.5;
 
 	std::vector<ItemData*> _itemDataVector;

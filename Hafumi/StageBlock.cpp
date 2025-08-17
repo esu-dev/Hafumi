@@ -4,6 +4,11 @@
 
 void StageBlock::Update()
 {
+	if (!_willFall)
+	{
+		return;
+	}
+
 	if (_timer >= _fallTime)
 	{
 		// Ž©—R—Ž‰ºŠJŽn
@@ -15,7 +20,8 @@ void StageBlock::Update()
 	_timer += Time::GetDelataTime();
 }
 
-void StageBlock::Initialize(float fallTime)
+void StageBlock::SetFallTime(float fallTime)
 {
+	_willFall = true;
 	_fallTime = fallTime;
 }

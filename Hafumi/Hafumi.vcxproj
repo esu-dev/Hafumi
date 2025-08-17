@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
+    <ClInclude Include="FPS_Shower.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Hafumi.h" />
     <ClInclude Include="InputReceiver.h" />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="FPS_Shower.cpp" />
     <ClCompile Include="Hafumi.cpp" />
     <ClCompile Include="InputReceiver.cpp" />
     <ClCompile Include="SampleSceneAsset.cpp" />

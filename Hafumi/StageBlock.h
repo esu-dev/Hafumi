@@ -7,10 +7,11 @@ class StageBlock : public MonoBehaviour
 public:
 	void Update() override;
 
-	void Initialize(float fallTime);
+	void SetFallTime(float fallTime);
 
 private:
-	float _fallTime;
+	bool _willFall = false;
+	float _fallTime = 0;
 	float _timer = 0;
 };
 

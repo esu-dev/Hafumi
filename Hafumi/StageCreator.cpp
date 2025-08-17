@@ -3,7 +3,6 @@
 #include "framework.h"
 
 #include "GameEngine.h"
-#include "StageBlock.h"
 
 using namespace SceneManagement;
 
@@ -12,25 +11,40 @@ StageCreator* StageCreator::Instance = nullptr;
 
 void StageCreator::Update()
 {
+	// ブロックの生成
 	if (_creationTimer >= _creationInterval)
 	{
 		_creationTimer = 0;
 
 
-		// ブロックの生成
 		GameObject* stageBlock = new GameObject();
 		stageBlock->AddComponent<SpriteRenderer>();
 		stageBlock->AddComponent<BoxCollider2D>()->SetSize(Vector2(1.5, 1.5));
 		stageBlock->AddComponent<Rigidbody2D>()->SetUseGravity(false);
-		stageBlock->AddComponent<StageBlock>()->Initialize(3);
+		StageBlock* stageBlockScript = stageBlock->AddComponent<StageBlock>();
 		stageBlock->GetTransform()->position = Vector3(_createdPosition, STANDARD_HEIGHT, 0);
+
+		_blockVector.push_back(stageBlockScript);
 
 		SceneManager::GetActiveScene()->AddGameObject(stageBlock);
 
 		_createdPosition += 1.5;
+	}
 
+	// ブロックの落下
+	if (_fallTimer >= _fallInterval)
+	{
+		_fallTimer = 0;
 
-		// アイテムの生成
+		_blockVector[0]->SetFallTime(0.5f);
+		_blockVector.erase(_blockVector.begin());
+	}
+
+	// アイテムの生成
+	if (_itemCreationTimer >= _itemCreationIntrval)
+	{
+		_itemCreationTimer = 0;
+
 		float createdPositionX = _lastCreatedPosition + (rand() % 10 + 1) * 1.5f;
 		GameObject* item = new GameObject();
 		item->AddComponent<SpriteRenderer>()->SetColor(DirectX::XMFLOAT4(0, 1, 0, 1));
@@ -47,7 +61,10 @@ void StageCreator::Update()
 		_lastCreatedPosition = createdPositionX;
 	}
 
+
 	_creationTimer += Time::GetDelataTime();
+	_fallTimer += Time::GetDelataTime();
+	_itemCreationTimer += Time::GetDelataTime();
 }
 
 StageCreator::StageCreator()

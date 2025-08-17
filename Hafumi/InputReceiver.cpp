@@ -10,11 +10,11 @@ void InputReceiver::Update()
 		character->Rotate();
 	}
 
-	if (Input::GetKeyDown('A'))
+	if (Input::GetKeyDown('S'))
 	{
 		character->DecreaseStickNum();
 	}
-	else if (Input::GetKeyDown('D'))
+	else if (Input::GetKeyDown('W'))
 	{
 		character->IncreaseStickNum();
 	}

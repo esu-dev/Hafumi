@@ -48,6 +48,9 @@
     <ClInclude Include="Tracker.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="FPS_Shower.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Hafumi.cpp">
@@ -69,6 +72,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Tracker.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="FPS_Shower.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

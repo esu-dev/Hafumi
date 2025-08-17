@@ -6,12 +6,18 @@
 #include "StageCreator.h"
 #include "InputReceiver.h"
 #include "Tracker.h"
+#include "FPS_Shower.h"
 
 using namespace SceneManagement;
 
 Scene* SampleSceneAsset::load_scene_asset_impl()
 {
 	Scene* scene = SceneManager::CreateScene("SampleSceneAsset");
+
+	GameObject* fpsText = new GameObject();
+	fpsText->AddComponent<TextLabel>();
+	fpsText->AddComponent<FPS_Shower>();
+	fpsText->GetTransform()->SetPosition(-8, 8);
 
 	GameObject* camera = new GameObject();
 	camera->AddComponent<Camera>();
@@ -48,6 +54,7 @@ Scene* SampleSceneAsset::load_scene_asset_impl()
 
 
 	scene->AddGameObject(camera);
+	scene->AddGameObject(fpsText);
 	scene->AddGameObject(inputReceiverObject);
 	scene->AddGameObject(stageCreatorObject);
 	scene->AddGameObject(stone1);
