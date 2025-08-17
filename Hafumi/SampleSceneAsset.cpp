@@ -17,7 +17,7 @@ Scene* SampleSceneAsset::load_scene_asset_impl()
 	GameObject* fpsText = new GameObject();
 	fpsText->AddComponent<TextLabel>();
 	fpsText->AddComponent<FPS_Shower>();
-	fpsText->GetTransform()->SetPosition(-8, 8);
+	fpsText->GetTransform()->SetPosition(-15, 10);
 
 	GameObject* camera = new GameObject();
 	camera->AddComponent<Camera>();
