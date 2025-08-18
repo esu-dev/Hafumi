@@ -9,10 +9,17 @@ void StageBlock::Update()
 		return;
 	}
 
+	if (this->get_transform()->position.y < -15)
+	{
+		Destroy(this->gameObject);
+		return;
+	}
+
 	if (_timer >= _fallTime)
 	{
 		// Ž©—R—Ž‰ºŠJŽn
-		this->gameObject->GetComponent<Rigidbody2D>()->SetUseGravity(true);
+		Rigidbody2D* rigidbody = this->gameObject->GetComponent<Rigidbody2D>();
+		this->gameObject->GetComponent<BoxCollider2D>()->Getb2Body()->SetType(b2BodyType::b2_dynamicBody);
 
 		_timer = 0;
 	}

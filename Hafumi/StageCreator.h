@@ -27,7 +27,7 @@ private:
 	const float STANDARD_HEIGHT = -5;
 
 	// ƒuƒƒbƒN
-	float _creationInterval = 1;
+	float _creationInterval = 0.6f;
 	float _creationTimer = 0;
 	float _createdPosition = -10;
 

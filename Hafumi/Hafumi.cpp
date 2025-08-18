@@ -4,6 +4,7 @@
 
 #include "DirectX.h"
 #include "GameSystem.h"
+#include "TitleSceneAsset.h"
 #include "SampleSceneAsset.h"
 
 #define MAX_LOADSTRING 100
@@ -47,7 +48,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     GameSystem::CreateInstance();
     GameSystem::GetInstance().Initialize();
 
-    SampleSceneAsset::load();
+    TitleSceneAsset::load();
+    //SampleSceneAsset::load();
 
     // ゲームループ
     while (1)

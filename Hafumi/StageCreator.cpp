@@ -19,8 +19,10 @@ void StageCreator::Update()
 
 		GameObject* stageBlock = new GameObject();
 		stageBlock->AddComponent<SpriteRenderer>();
-		stageBlock->AddComponent<BoxCollider2D>()->SetSize(Vector2(1.5, 1.5));
-		stageBlock->AddComponent<Rigidbody2D>()->SetUseGravity(false);
+		BoxCollider2D* blockBoxCollider = stageBlock->AddComponent<BoxCollider2D>();
+		blockBoxCollider->SetSize(Vector2(1.1, 1.1));
+		Rigidbody2D* blockRigidbody = stageBlock->AddComponent<Rigidbody2D>();
+		blockRigidbody->SetKinematic();
 		StageBlock* stageBlockScript = stageBlock->AddComponent<StageBlock>();
 		stageBlock->GetTransform()->position = Vector3(_createdPosition, STANDARD_HEIGHT, 0);
 
@@ -35,6 +37,7 @@ void StageCreator::Update()
 	if (_fallTimer >= _fallInterval)
 	{
 		_fallTimer = 0;
+		_fallInterval -= 0.025f;
 
 		_blockVector[0]->SetFallTime(0.5f);
 		_blockVector.erase(_blockVector.begin());
