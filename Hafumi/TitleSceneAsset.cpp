@@ -1,17 +1,24 @@
 #include "TitleSceneAsset.h"
 
 #include "GameEngine.h"
+#include "TitleSceneManager.h"
 
 using namespace SceneManagement;
 
 Scene* TitleSceneAsset::load_scene_asset_impl()
 {
-	Scene* scene = SceneManager::CreateScene("SampleSceneAsset");
+	Scene* scene = SceneManager::CreateScene("TitleScene");
 	
 	GameObject* camera = new GameObject();
+	camera->tag = "MainCamera";
 	camera->AddComponent<Camera>();
 	scene->AddGameObject(camera);
 	
+
+	GameObject* sceneManger = new GameObject();
+	sceneManger->AddComponent<TitleSceneManager>();
+	scene->AddGameObject(sceneManger);
+
 
 	// ƒ^ƒCƒgƒ‹ƒƒS
 	Texture* texture = new Texture("Resources/Texture/TitleLogo.png");
@@ -29,7 +36,7 @@ Scene* TitleSceneAsset::load_scene_asset_impl()
 	scene->AddGameObject(text);
 
 
-	SceneManager::SetActiveScene(scene);
+	//SceneManager::SetActiveScene(scene);
 
 	return scene;
 }

@@ -8,9 +8,9 @@ class Tracker : public MonoBehaviour
 public:
 	void Update() override;
 
-	void SetMovingRate(float movingRate) { _movingRate = movingRate; }
-	void SetOffset(Vector3 offset) { _offset = offset; };
-	void SetTarget(GameObject* target) { _target = target; }
+	void SetMovingRate(float movingRate);
+	void SetOffset(Vector3 offset);
+	void SetTarget(GameObject* target);
 
 private:
 	float _movingRate = 0.02f;

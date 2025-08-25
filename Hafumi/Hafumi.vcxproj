@@ -139,6 +139,7 @@
     <ClInclude Include="StageCreator.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TitleSceneAsset.h" />
+    <ClInclude Include="TitleSceneManager.h" />
     <ClInclude Include="Tracker.h" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,7 @@
     <ClCompile Include="StageBlock.cpp" />
     <ClCompile Include="StageCreator.cpp" />
     <ClCompile Include="TitleSceneAsset.cpp" />
+    <ClCompile Include="TitleSceneManager.cpp" />
     <ClCompile Include="Tracker.cpp" />
   </ItemGroup>
   <ItemGroup>

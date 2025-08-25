@@ -5,6 +5,13 @@
 #include "StageCreator.h"
 
 // public
+void Character::Start()
+{
+	Tracker* tracker = Camera::get_main()->gameObject->GetComponent<Tracker>();
+	tracker->SetTarget(_fulcrumStone);
+	tracker->SetOffset(-_fulcrumStone->GetTransform()->position);
+}
+
 void Character::Update()
 {
 	state->Update();
@@ -21,10 +28,6 @@ void Character::Initialize(GameObject* stone1, GameObject* stone2)
 
 	_fulcrumStone->GetTransform()->position = Vector3(START_POS_X, STANDARD_HEIGHT, 0);
 	_movingStone->GetTransform()->position = Vector3(START_POS_X - stickLengthUnit * stickNum, STANDARD_HEIGHT, 0);
-
-	Tracker* tracker = Camera::get_main()->gameObject->GetComponent<Tracker>();
-	tracker->SetTarget(_fulcrumStone);
-	tracker->SetOffset(-_fulcrumStone->GetTransform()->position);
 }
 
 void Character::Rotate()

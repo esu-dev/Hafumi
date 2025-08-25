@@ -6,6 +6,7 @@
 class Character : public Component
 {
 public:
+	void Start() override;
 	void Update() override;
 
 	void Initialize(GameObject* stone1, GameObject* stone2);

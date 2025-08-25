@@ -16,6 +16,12 @@
     <Filter Include="Assets">
       <UniqueIdentifier>{0eb97ddb-c30a-4c31-8532-cf98ee8c0bf4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\TitleScene">
+      <UniqueIdentifier>{5511d68a-3301-482b-8640-6536a7b3d33e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\TitleScene">
+      <UniqueIdentifier>{720efa2a-87ff-4805-b400-d8a989da55b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -54,6 +60,9 @@
     <ClInclude Include="TitleSceneAsset.h">
       <Filter>Assets</Filter>
     </ClInclude>
+    <ClInclude Include="TitleSceneManager.h">
+      <Filter>ヘッダー ファイル\TitleScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Hafumi.cpp">
@@ -82,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="TitleSceneAsset.cpp">
       <Filter>Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleSceneManager.cpp">
+      <Filter>ソース ファイル\TitleScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
