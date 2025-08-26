@@ -32,10 +32,6 @@ Scene* SampleSceneAsset::load_scene_asset_impl()
 	std::wstring ws(s.begin(), s.end());
 	Debug::Log(L"string %s", ws.c_str());
 
-	GameObject* stageCreatorObject = new GameObject();
-	stageCreatorObject->AddComponent<StageCreator>();
-	scene->AddGameObject(stageCreatorObject);
-
 
 	GameObject* stone1 = new GameObject();
 	stone1->AddComponent<SpriteRenderer>()->SetColor(DirectX::XMFLOAT4(1, 0, 0, 1));
@@ -50,6 +46,11 @@ Scene* SampleSceneAsset::load_scene_asset_impl()
 	Character* character = characterObject->AddComponent<Character>();
 	character->Initialize(stone1, stone2);
 	scene->AddGameObject(characterObject);
+
+
+	GameObject* stageCreatorObject = new GameObject();
+	stageCreatorObject->AddComponent<StageCreator>()->Initialize(character);
+	scene->AddGameObject(stageCreatorObject);
 
 
 	GameObject* inputReceiverObject = new GameObject();

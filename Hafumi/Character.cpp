@@ -19,6 +19,11 @@ void Character::Update()
 	//Debug::Log(L"delta time: %f", Time::GetDelataTime());
 }
 
+GameObject* Character::GetFulcrumStone()
+{
+	return _fulcrumStone;
+}
+
 void Character::Initialize(GameObject* stone1, GameObject* stone2)
 {
 	this->stone1 = stone1;

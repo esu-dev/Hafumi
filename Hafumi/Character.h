@@ -9,6 +9,8 @@ public:
 	void Start() override;
 	void Update() override;
 
+	GameObject* GetFulcrumStone();
+
 	void Initialize(GameObject* stone1, GameObject* stone2);
 	void Rotate();
 	void IncreaseStickNum();
