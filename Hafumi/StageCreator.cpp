@@ -44,9 +44,9 @@ void StageCreator::Update()
 		{
 			_fallTimer = 0;
 			_fallInterval -= 0.05f;
-			if (_fallInterval < 0.25f)
+			if (_fallInterval < 0.5f)
 			{
-				_fallInterval = 0.25f;
+				_fallInterval = 0.5f;
 			}
 
 			_blockVector[0]->SetFallTime(0.1f);

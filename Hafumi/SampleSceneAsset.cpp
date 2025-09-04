@@ -32,6 +32,7 @@ Scene* SampleSceneAsset::load_scene_asset_impl()
 	std::wstring ws(s.begin(), s.end());
 	Debug::Log(L"string %s", ws.c_str());
 
+	//Texture* characterTexture1 = new Texture("Resources/Texture/character1.png");
 
 	GameObject* stone1 = new GameObject();
 	stone1->AddComponent<SpriteRenderer>()->SetColor(DirectX::XMFLOAT4(1, 0, 0, 1));
@@ -40,6 +41,7 @@ Scene* SampleSceneAsset::load_scene_asset_impl()
 	GameObject* stone2 = new GameObject();
 	stone2->AddComponent<SpriteRenderer>();
 	stone2->GetTransform()->position = Vector3(-3, 0, 0);
+	//stone2->GetTransform()->scale = Vector3(1.25f, 1.25f, 0);
 	scene->AddGameObject(stone2);
 
 	GameObject* characterObject = new GameObject();

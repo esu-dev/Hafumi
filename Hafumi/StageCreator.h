@@ -34,7 +34,7 @@ private:
 	float _creationTimer = 0;
 	float _createdPosition = -10;
 
-	float _fallInterval = 2.5f;
+	float _fallInterval = 3.0f;
 	float _fallTimer = 0;
 
 	std::vector<StageBlock*> _blockVector;
